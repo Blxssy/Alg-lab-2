@@ -1,25 +1,62 @@
-CXX := gcc
+#CXX := gcc
+#
+#CXXFLAGS := -Wall -std=c++20 -D_DEFAULT_SOURCE -Wno-missing-braces -Wunused-result
+#
+#SRCDIR := src
+#SOURCES := $(wildcard $(SRCDIR)/*.cpp)
+#
+#OBJDIR := obj
+#OBJECTS := $(SOURCES:$(SRCDIR)/%.cpp=$(OBJDIR)/%.o)
+#
+#TARGET := main
+#
+#$(TARGET): $(OBJECTS)
+#	$(CC) $(CFLAGS) $^ -o $@ -lstdc++
+#
+#$(OBJDIR)/%.o: $(SRCDIR)/%.cpp | $(OBJDIR)
+#	$(CC) $(CFLAGS) -c $< -o $@
+#
+#$(OBJDIR):
+#	mkdir -p $(OBJDIR)
+#
+#clean:
+#	rm -rf $(OBJDIR) $(TARGET)
+#
+#.PHONY: clean
 
-CXXFLAGS := -Wall -std=c++20 -D_DEFAULT_SOURCE -Wno-missing-braces -Wunused-result
+CXX = g++
+CXXFLAGS = -std=c++20 -Wall -Wextra
+SRCDIR = src
+OBJDIR = obj
+BINDIR = bin
 
-SRCDIR := src
-SOURCES := $(wildcard $(SRCDIR)/*.cpp)
+# Список исходных файлов
+SRCS = $(wildcard $(SRCDIR)/*.cpp)
 
-OBJDIR := obj
-OBJECTS := $(SOURCES:$(SRCDIR)/%.cpp=$(OBJDIR)/%.o)
+# Преобразование исходных файлов в список объектных файлов
+OBJS = $(patsubst $(SRCDIR)/%.cpp,$(OBJDIR)/%.o,$(SRCS))
 
-TARGET := main
+# Имя исполняемого файла
+TARGET = $(BINDIR)/main
 
-$(TARGET): $(OBJECTS)
-	$(CC) $(CFLAGS) $^ -o $@ -lstdc++
+all: $(TARGET) run
 
-$(OBJDIR)/%.o: $(SRCDIR)/%.cpp | $(OBJDIR)
-	$(CC) $(CFLAGS) -c $< -o $@
+# Компиляция объектных файлов
+$(OBJDIR)/%.o: $(SRCDIR)/%.cpp
+	$(CXX) $(CXXFLAGS) -c $< -o $@
 
-$(OBJDIR):
-	mkdir -p $(OBJDIR)
+# Сборка исполняемого файла
+$(TARGET): $(OBJS)
+	$(CXX) $(CXXFLAGS) $^ -o $@
+
+run: $(TARGET)
+	./$(TARGET)
 
 clean:
 	rm -rf $(OBJDIR) $(TARGET)
 
 .PHONY: clean
+
+# Создание директорий obj и bin при их отсутствии
+$(shell mkdir -p $(OBJDIR) $(BINDIR))
+
