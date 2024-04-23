@@ -46,7 +46,7 @@ vector<vector<int>> BuildMap(std::vector<Rectangle>& rectangles) {
 
     auto end = std::chrono::steady_clock::now();
     std::chrono::duration<double> elapsed_seconds = end - begin;
-    std::cout << "Время сборки Map: " << elapsed_seconds.count() << " секунд" << "\n";
+    std::cout << "Build Map: " << elapsed_seconds.count() << " seconds" << "\n";
 
     return map;
 }
@@ -71,7 +71,7 @@ void MapTime(vector<vector<int>>& map, vector<Point>& points){
 
     auto end = std::chrono::steady_clock::now();
     std::chrono::duration<double> elapsed_seconds = end - begin;
-    std::cout << "Время выполнения Map: " << elapsed_seconds.count() << " секунд" << "\n";
+    std::cout << "Execution time Map: " << elapsed_seconds.count() << " seconds" << "\n";
 }
 
 int BruteForce(vector<Rectangle>& recs, Point point){
@@ -97,5 +97,5 @@ void BruteForceTime(vector<Rectangle>& recs, vector<Point>& points){
 
     auto end = std::chrono::steady_clock::now();
     std::chrono::duration<double> elapsed_seconds = end - begin;
-    std::cout << "Время выполнения BruteForce: " << elapsed_seconds.count() << " секунд" << "\n";
+    std::cout << "Execution time BruteForce: " << elapsed_seconds.count() << " seconds" << "\n";
 }
