@@ -46,7 +46,7 @@ vector<vector<int>> BuildMap(std::vector<Rectangle>& rectangles) {
 
     auto end = std::chrono::steady_clock::now();
     std::chrono::duration<double> elapsed_seconds = end - begin;
-    std::cout << "Build Map: " << elapsed_seconds.count() << " seconds" << "\n";
+    std::cout << "Build time Map: " << elapsed_seconds.count() << " seconds" << "\n";
 
     return map;
 }
