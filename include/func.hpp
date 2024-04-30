@@ -15,13 +15,13 @@ using namespace std;
 inline std::vector<int> compX;
 inline std::vector<int> compY;
 
-int Comp(vector<int>& arr, int x);
+int Comp(std::vector<int>& arr, int x);
 std::vector<std::vector<int>> BuildMap(std::vector<Rectangle>& rectangles);
 
-int Map(vector<vector<int>>& map, Point point);
-void MapTime(vector<vector<int>>& map, vector<Point>& points);
+int Map(std::vector<std::vector<int>>& map, Point point);
+void MapTime(std::vector<std::vector<int>>& map, std::vector<Point>& points);
 
-int BruteForce(vector<Rectangle>& recs, Point point);
-void BruteForceTime(vector<Rectangle>& recs, vector<Point>& point);
+int BruteForce(std::vector<Rectangle>& recs, Point point);
+void BruteForceTime(std::vector<Rectangle>& recs, std::vector<Point>& point);
 
 #endif
