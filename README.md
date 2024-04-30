@@ -132,6 +132,35 @@ void Result(vector<Rectangle> &rectangles, vector<Point> &points) {
 ### Сложность подготовки: O(N * log(N))
 ### Сложность поиска: O(log(N))
 
+## Тестирование
+```c++
+std::vector<Point> GeneratePoints(int number, int range) {
+    const int X_PRIME = 65537;
+    const int Y_PRIME = 7919;
+    std::vector<Point> points;
+    std::random_device rd;
+    std::mt19937 gen(rd());
+    std::uniform_int_distribution<> dis(0, range);
+
+    for (int i = 0; i < number; i++) {
+        int x = (X_PRIME * i) % range;
+        int y = (Y_PRIME * i) % range;
+        points.push_back(Point(x, y));
+    }
+    return points;
+}
+
+
+vector<Rectangle> GenerateRecs(int count){
+    vector<Rectangle> rectangles;
+
+    for (int i = 0; i < count; i++) {
+        rectangles.push_back(Rectangle(Point(10 * i, 10 * i), Point(10 * (2 * count - i), 10 * (2 * count - i))));
+    }
+    return rectangles;
+}
+```
+
 ## График
 ![img](img.png)
 
